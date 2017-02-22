@@ -1,0 +1,22 @@
+
+form .ng-pristine{ 
+	border: 1px dotted gray;
+}
+
+
+form .ng-valid.ng-dirty {
+	background-color: lightpink; 
+}
+
+form .ng-valid.ng-dirty {
+	background-color: lightgreen; 
+}
+
+form .ng-invalid-email {
+	background-color: red; 
+}
+
+span.summary .ng-invalid {
+	color: red;
+	font-weight: bold;
+}

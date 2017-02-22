@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+    	angular.module("testApp", [])
+    	.controller("defContrl", function($scope) {
+    		$scope.addNewUser = function(userDetais) {
+    			$scope.message = userDetails.name
+    			+ " ("+userDetails.password+ ") ("+userDetails.email +")";
+    		}
+
+    		$scope.message = "Ready";
+    	});
+    </script>
+</head>
+<body>
+ <div ng-app="testApp" ng-controller="defContrl">
+ 	<div class="container">
+	 	<div class="row">
+	 	    <div class="col-md-6">
+				<form class="form-horizontal" name="tForm" novalidate ng-submit="addNewUser(newUser)">
+					<div class="z">
+						
+						<div class="form-group">
+							<label for="inputUser" class="col-sm-2 control-label">User</label>
+							<div class="col-sm-5">
+						  		<input name="userName" type="text" class="form-control" id="inputUser" placeholder="User" required ng-model="newUser.name">
+							</div>
+						</div>
+						<div class="emptyUser" ng-show="tForm.userName.$invalid && tForm.userName.$ditry">
+							<span ng-show="tForm.userName.$error.required">User rerequired</span>
+						</div>
+
+
+						<div class="form-group">
+							<label for="inputPassword" class="col-sm-2 control-label">Password</label>
+							<div class="col-sm-5">
+						  		<input name="userPassword" type="password" class="form-control" id="inputPassword" placeholder="Password" required ng-model="newUser.password">
+							</div>
+						</div>
+						<div class="emptyPass" ng-show="tForm.userPassword.$invalid  && tForm.userPassword.$dirty">
+							<span ng-show="tForm.userPassword.$error.required">Password rerequired</span>
+						</div>
+
+
+						<div class="form-group">
+							<label for="inputEmail" class="col-sm-2 control-label">Email</label>
+							<div class="col-sm-5">
+								<input name="userEmail" type="email" class="form-control" id="inputEmail" placeholder="Email" required ng-model="newUser.email" >
+							</div>
+						</div>
+
+						<div class="emptyUser" ng-show="tForm.userEmail.$invalid && tForm.userEmail.$dirty">
+							<span ng-show="tForm.userEmail.$error.email">Incorrect email format</span>
+							<span ng-show="tForm.userEmail.$error.required">Email rerequired</span>
+						</div>
+
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" name="agree" ng-model="newUser.agree" required>
+								I agree with all terms
+							</label>
+						</div>
+						<div class="emptyUser" ng-show="tForm.checkbox.$invalid && tForm.checkbox.$dirty">
+							<span ng-show="tForm.checkbox.$error.required">Agree checked rerequired</span>
+						</div>
+
+
+						<button type="button" class="btn btn-primary" ng-disabled="tForm.$invalid">Submit</button>
+					</div>
+
+					<div class="status">
+						<span class="summary" ng-class="tForm.$valid ? 'ng-valid' : 'ng-invalid' ">
+							Status validation:{{tForm.$valid}}
+						</span>
+					</div>
+				</form>
+
+			</div>	
+		</div>
+	</div>	
+</div>	
+</body>
+
+</html>
+
